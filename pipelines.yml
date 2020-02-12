@@ -2,7 +2,7 @@ resources:
   - name: app
     type: GitRepo
     configuration:
-      gitProvider: my_git
+      gitProvider: my_git2
       path: derekscp/xraytest
 
 pipelines:
