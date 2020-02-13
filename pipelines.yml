@@ -39,6 +39,13 @@ pipelines:
             - name: be_gitRepo
           integrations:
             - name: art
+          runtime:
+            type: image
+            image:
+              auto:
+                language: java
+                versions:
+                  - "10"            
         execution:
           onStart:
             - javac -version
