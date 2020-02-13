@@ -1,0 +1,90 @@
+#Based on mvn example from https://www.jfrog.com/confluence/display/JFROG/Pipeline+Example%3A+Maven+and+Npm+Build
+resources:
+  # Git repo for back-end source
+  - name: be_gitRepo
+    type: GitRepo
+    configuration:
+      path: derekscp/xraytest
+      gitProvider: my_git
+ 
+  # Build info for the application
+  - name: appl_build_info
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art
+      buildName: backend_build
+      buildNumber: 1
+ 
+  # Build info for the promoted application
+  - name: appl_promoted_build_info
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art
+      buildName: backend_build
+      buildNumber: 1
+      
+      
+      
+      pipelines:
+  - name: demo_application
+    steps:
+      - name: bld_backend
+        type: MvnBuild
+        configuration:
+          sourceLocation: .
+          mvnCommand: clean install -ntp
+          configFileLocation: .
+          configFileName: mvn-art-config
+          inputResources:
+            - name: be_gitRepo
+          integrations:
+            - name: art
+          runtime:
+            type: image
+            image:
+              auto:
+                language: java
+                versions:
+                  - "11"
+        execution:
+          onStart:
+            - javac -version
+            - mvn --version
+ 
+      - name: publish_app_build
+        type: PublishBuildInfo
+        configuration:
+          inputSteps:
+            - name: build_app
+          outputResources:
+            - name: appl_build_info
+            
+        execution:
+          onStart:
+            - echo "Preparing for publishing..."
+          onSuccess:
+            - echo "Job done."
+          onFailure:
+            - echo "Something went wrong"
+          onComplete: #always
+            - echo "Cleaning up stuff"
+ 
+      - name: promote_app_build
+        type: PromoteBuild
+        configuration:
+          targetRepository: libs-snapshot-local
+          integrations:
+            - name: art
+          inputResources:
+            - name: appl_build_info
+          outputResources:
+            - name: appl_promoted_build_info
+        execution:
+          onStart:
+            - echo "Preparing for work..."
+          onSuccess:
+            - echo "Job well done!"
+          onFailure:
+            - echo "uh oh, something went wrong"
+          onComplete: #always
+            - echo "Cleaning up some stuff"
