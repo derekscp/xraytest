@@ -55,7 +55,7 @@ pipelines:
         type: PublishBuildInfo
         configuration:
           inputSteps:
-            - name: build_app
+            - name: bld_backend
           outputResources:
             - name: appl_build_info
             
