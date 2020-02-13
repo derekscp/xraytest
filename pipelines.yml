@@ -34,7 +34,7 @@ pipelines:
           sourceLocation: .
           mvnCommand: clean install -ntp
           configFileLocation: .
-          configFileName: mvn-art-config
+          configFileName: pom.xml
           inputResources:
             - name: be_gitRepo
           integrations:
