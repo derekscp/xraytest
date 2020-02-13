@@ -25,7 +25,7 @@ resources:
       
       
       
-      pipelines:
+pipelines:
   - name: demo_application
     steps:
       - name: bld_backend
