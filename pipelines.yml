@@ -6,10 +6,7 @@ resources:
     configuration:
       path: derekscp/xraytest
       gitProvider: my_git
-      buildOn:
-        commit:                true
-        pullRequestCreate:     true
-        releaseRequestCreate:  true    
+
  
   # Build info for the application
   - name: appl_build_info
@@ -26,7 +23,12 @@ resources:
       sourceArtifactory: art
       buildName: backend_build
       buildNumber: 1
-      
+
+  - name: internal_webhook
+    type: Webhook
+    configuration:
+      integrationName: git_commit_webhook
+
       
       
 pipelines:
@@ -43,6 +45,7 @@ pipelines:
             - name: be_gitRepo
           integrations:
             - name: art
+            - name: internal_webhook
           runtime:
             type: image
             image:
