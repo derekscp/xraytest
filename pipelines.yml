@@ -6,6 +6,10 @@ resources:
     configuration:
       path: derekscp/xraytest
       gitProvider: my_git
+    buildOn:
+      commit:                true
+      pullRequestCreate:     true
+      releaseRequestCreate:  true    
  
   # Build info for the application
   - name: appl_build_info
