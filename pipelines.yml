@@ -28,6 +28,7 @@ resources:
     type: Webhook
     configuration:
       webhookName: git_commit_webhook
+      payload: buildNumber
 
       
       
