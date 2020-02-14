@@ -79,6 +79,8 @@ pipelines:
         type: XrayScan
         configuration:
           waitUntilFinish: true
+          inputSteps:
+            - name: publish_app_build         
          
           inputResources:
             - name: appl_build_info
@@ -97,6 +99,8 @@ pipelines:
       - name: promote_app_build
         type: PromoteBuild
         configuration:
+          inputSteps:
+            - name: scan       
           targetRepository: libs-snapshot-local
           integrations:
             - name: art
