@@ -44,9 +44,9 @@ pipelines:
           configFileName: mvn-art-config
           inputResources:
             - name: be_gitRepo
+            - name: internal_webhook
           integrations:
             - name: art
-            - name: git_commit_webhook
           runtime:
             type: image
             image:
