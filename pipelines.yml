@@ -25,9 +25,9 @@ resources:
       buildNumber: 1
 
   - name: internal_webhook
-    type: Webhook
+    type: IncomingWebhook
     configuration:
-      integrationName: git_commit_webhook
+      webhookName: git_commit_webhook
 
       
       
