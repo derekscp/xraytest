@@ -75,14 +75,14 @@ pipelines:
           onComplete: #always
             - echo "Cleaning up stuff"
  
-     - name: scan
-       type: XrayScan
-       configuration:
-         waitUntilFinish: true
+      - name: scan
+        type: XrayScan
+        configuration:
+          waitUntilFinish: true
          
-         inputResources:
-           - name: appl_build_info
-             trigger: false
+          inputResources:
+            - name: appl_build_info
+              trigger: false
         execution:
           onStart:
             - echo "Preparing for publishing..."
