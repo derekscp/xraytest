@@ -46,7 +46,7 @@ pipelines:
             - name: be_gitRepo
           integrations:
             - name: art
-            - name: internal_webhook
+            - name: git_commit_webhook
           runtime:
             type: image
             image:
