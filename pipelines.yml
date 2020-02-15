@@ -79,7 +79,6 @@ pipelines:
         type: XrayScan
         configuration:
           waitUntilFinish: true
-          failBuild: false
           inputSteps:
             - name: publish_app_build         
          
