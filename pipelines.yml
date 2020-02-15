@@ -101,7 +101,7 @@ pipelines:
         configuration:
           inputSteps:
             - name: scan       
-          targetRepository: libs-snapshot-local
+          targetRepository: libs-release-local
           integrations:
             - name: art
           inputResources:
