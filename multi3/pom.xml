@@ -11,31 +11,7 @@
     <packaging>war</packaging>
     <name>Multi 3</name>
 
-    <dependencies>
-        <!-- depends on another project (should include transitive) -->
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>multi1</artifactId>
-           <version>${project.parent.version}</version>
-        </dependency>
-       
 
-        <!-- runtime dependency -->
-        <dependency>
-            <groupId>hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>1.8.0.10</version>
-            <scope>runtime</scope>
-        </dependency>
-
-        <!-- provided dependency -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
 
     <profiles>
         <profile>
