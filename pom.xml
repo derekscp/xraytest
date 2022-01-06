@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jfrog.change</groupId>
     <artifactId>multi</artifactId>
-    <version>01.04.2022.16.46.32-SNAPSHOT</version>
+    <version>01.05.2022.16.46.32-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Simple Multi Modules Build</name>
 
